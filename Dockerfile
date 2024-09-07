@@ -24,4 +24,4 @@ RUN ls -la \
 EXPOSE 8000
 
 # Run migrations and start Django development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "django-source/manage.py", "runserver", "0.0.0.0:8000"]

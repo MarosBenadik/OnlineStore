@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --upgrade pip
 
 RUN ls -la \
-  && pip install -r flask-source/requirements.txt
+  && pip install -r django-source/requirements.txt
 
 # Expose port 8000 for Django development server
 EXPOSE 8000

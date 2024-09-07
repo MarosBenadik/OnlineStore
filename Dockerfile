@@ -23,5 +23,7 @@ RUN ls -la \
 # Expose port 8000 for Django development server
 EXPOSE 8000
 
+WORKDIR /app/django-source
+
 # Run migrations and start Django development server
-CMD ["python", "django-source/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

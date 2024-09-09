@@ -90,7 +90,7 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = f'{FORCE_SCRIPT_NAME}/static/' if FORCE_SCRIPT_NAME else '/static/'
-STATICFILES_DIRS = ["/app/django-source/", "static")]
+STATICFILES_DIRS = STATICFILES_DIRS = [os.path.join("/app/django-source/", "static")]
 
 MEDIA_URL = f'{FORCE_SCRIPT_NAME}/media/' if FORCE_SCRIPT_NAME else '/media/'
 MEDIA_ROOT = os.path.join("/app/django-source/", "media/")

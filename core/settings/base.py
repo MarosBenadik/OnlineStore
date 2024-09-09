@@ -89,12 +89,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = "/static/"
+STATIC_URL = f'{FORCE_SCRIPT_NAME}/static/' if FORCE_SCRIPT_NAME else '/static/'
+STATICFILES_DIRS = ["/app/django-source/", "static")]
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+MEDIA_URL = f'{FORCE_SCRIPT_NAME}/media/' if FORCE_SCRIPT_NAME else '/media/'
+MEDIA_ROOT = os.path.join("/app/django-source/", "media/")
 
 # Basket session ID
 BASKET_SESSION_ID = "basket"
@@ -106,3 +105,14 @@ LOGIN_URL = "/account/login/"
 
 # Email setting
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# Get the prefix from the environment variable (default is no prefix)
+prefix = os.getenv('DJANGO_PREFIX', '')
+
+if prefix:
+    # Ensure the prefix starts with "/"
+    if not prefix.startswith('/'):
+        prefix = f'/{prefix}'
+
+    # Set the FORCE_SCRIPT_NAME to inform Django of the prefix
+    FORCE_SCRIPT_NAME = prefix

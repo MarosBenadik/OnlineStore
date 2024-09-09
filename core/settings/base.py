@@ -89,11 +89,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = f'{FORCE_SCRIPT_NAME}/static/' if FORCE_SCRIPT_NAME else '/static/'
-STATICFILES_DIRS = STATICFILES_DIRS = [os.path.join("/app/django-source/", "static")]
-
-MEDIA_URL = f'{FORCE_SCRIPT_NAME}/media/' if FORCE_SCRIPT_NAME else '/media/'
-MEDIA_ROOT = os.path.join("/app/django-source/", "media/")
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
 # Basket session ID
 BASKET_SESSION_ID = "basket"
@@ -116,3 +113,8 @@ if prefix:
 
     # Set the FORCE_SCRIPT_NAME to inform Django of the prefix
     FORCE_SCRIPT_NAME = prefix
+    STATIC_URL = f'{FORCE_SCRIPT_NAME}/static/' if FORCE_SCRIPT_NAME else '/static/'
+    MEDIA_URL = f'{FORCE_SCRIPT_NAME}/media/' if FORCE_SCRIPT_NAME else '/media/'
+
+STATICFILES_DIRS = STATICFILES_DIRS = [os.path.join("/app/django-source/", "static")]
+MEDIA_ROOT = os.path.join("/app/django-source/", "media/")
